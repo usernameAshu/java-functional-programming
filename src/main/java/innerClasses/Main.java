@@ -12,6 +12,7 @@ public class Main {
         Outer.StaticClass.staticMethod();
         Outer.StaticClass staticClass = new Outer.StaticClass();
         staticClass.nonStaticMethod();
+        Outer.StaticClass.staticMethod();
     }
 
 
@@ -31,7 +32,7 @@ class Outer {
 
         public void seeOuter() {
             System.out.println("Outer x: " + Outer.this.x + "\n" +
-                    "Inner elements: " + y + "," + x);
+                    "Inner elements: " + this.y + "," + this.x);
         }
     }
 
@@ -47,6 +48,8 @@ class Outer {
                         "method variables: " + z + " method inner class variables: "+ p);
 
                 //z = 10; Illegal statement
+                p = 10;
+                Outer.this.x = 199;
             }
         }
         MethodInnerClass methodInnerClass = new MethodInnerClass();
