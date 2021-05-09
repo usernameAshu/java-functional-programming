@@ -1,5 +1,7 @@
 package innerClasses.Certification;
 
+import java.util.Comparator;
+
 public class Main2 {
     public static void main(String[] args) {
         Object o = new Object() {
@@ -60,13 +62,36 @@ class Test3 {
 
         System.out.println(test1.getNum() + "   " + test2.getNum());
 
-//        new MethodLocal().go(); Compilation fails here
+
+    }
+
+    public void instanceMethod() {
+        new MethodLocal().go();
         class MethodLocal {
             void go() {
                 System.out.println("MethodLocal.go");
             }
         }
         new MethodLocal().go();
+    }
+
+    class MethodLocal {
+        void go() {
+            System.out.println("Inner class MethodLocal.go");
+        }
+    }
+
+}
+
+class Pockets {
+    public static void main(String[] args) {
+      //  Sorter sorter = new Sorter();  inner class are instance members of the class
+    }
+    class Sorter implements Comparator<String> {
+        @Override
+        public int compare(String o1, String o2) {
+            return o2.compareTo(o1);
+        }
     }
 }
 
